@@ -12,7 +12,9 @@ import SwiftData
 struct OverloadPTApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            UserPreferences.self,
+            BodyweightRecord.self,
+            // Item.self, // We will add our custom models here later
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
