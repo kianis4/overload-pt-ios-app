@@ -1,0 +1,38 @@
+name: Overload PT CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build_and_test:
+    name: Build and Test
+    runs-on: macos-latest # Or macos-13 if specific Xcode needed
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Select Xcode version
+      # Add step to select Xcode version if specific version is needed
+      # Example: sudo xcode-select -s /Applications/Xcode_15.0.app/Contents/Developer
+      run: echo "Xcode version selection step (if needed)"
+
+    - name: Install SwiftLint
+      run: brew install swiftlint
+
+    - name: Run SwiftLint
+      run: swiftlint lint --strict
+
+    # - name: Build
+    #   run: xcodebuild build -scheme OverloadPT -destination 'platform=iOS Simulator,name=iPhone 15' # Replace OverloadPT with your scheme
+    #   # Ensure your project has a shared scheme named OverloadPT or similar
+
+    # - name: Test
+    #   run: xcodebuild test -scheme OverloadPT -destination 'platform=iOS Simulator,name=iPhone 15' # Replace OverloadPT with your scheme
+    #   # Ensure your project has a shared scheme and test targets configured
+
+    # Note: Build and Test steps are commented out until the Xcode project is initialized.
+    # These will be enabled once the project structure is in place.

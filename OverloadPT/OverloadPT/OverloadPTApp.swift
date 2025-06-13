@@ -5,30 +5,23 @@
 //  Created by Suleyman Kiani on 2025-06-12.
 //
 
+// OverloadPTApp.swift  —  replace contents with:
+
 import SwiftUI
 import SwiftData
 
 @main
 struct OverloadPTApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            UserPreferences.self,
-            BodyweightRecord.self,
-            // Item.self, // We will add our custom models here later
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    private let models: [any PersistentModel.Type] = [
+        Exercise.self,
+        WorkoutDay.self,
+        SetEntry.self
+    ]
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()      // or ContentView()
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(for: models)   // single-line SwiftData setup
     }
 }

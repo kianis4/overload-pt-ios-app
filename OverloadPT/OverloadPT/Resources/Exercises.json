@@ -1,0 +1,7 @@
+[
+  { "name": "Bench Press",       "muscle": "chest"   },
+  { "name": "Barbell Row",       "muscle": "back"    },
+  { "name": "Back Squat",        "muscle": "legs"    },
+  { "name": "Overhead Press",    "muscle": "shoulders" },
+  { "name": "Bicep Curl",        "muscle": "arms"    }
+]
